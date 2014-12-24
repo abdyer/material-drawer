@@ -28,6 +28,7 @@ public class DrawerItem {
     public static final int AVATAR = 2;
 
     private boolean mIsDivider = false;
+    private boolean mIsSelected = false;
 
     private int mItemId;
 
@@ -50,6 +51,16 @@ public class DrawerItem {
 
     public boolean isDivider() {
         return mIsDivider;
+    }
+
+    public DrawerItem setIsSelected(boolean isSelected) {
+        mIsSelected = isSelected;
+        notifyDataChanged();
+        return this;
+    }
+
+    public boolean isSelected() {
+        return mIsSelected;
     }
 
     /**

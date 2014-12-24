@@ -80,6 +80,8 @@ public class DrawerAdapter extends ArrayAdapter<DrawerItem> {
                 viewHolder.getTextViewPrimary().setText(drawerItem.getTextPrimary());
                 viewHolder.getTextViewSecondary().setVisibility(View.GONE);
             }
+
+            viewHolder.mRoot.setActivated(drawerItem.isSelected());
         }
 
         return convertView;
