@@ -16,6 +16,7 @@
 
 package com.heinrichreimersoftware.materialdrawer.structure;
 
+import android.content.res.ColorStateList;
 import android.graphics.drawable.Drawable;
 import android.widget.ArrayAdapter;
 
@@ -28,6 +29,7 @@ public class DrawerItem {
     public static final int AVATAR = 2;
 
     private boolean mIsDivider = false;
+    private boolean mIsSelected = false;
 
     private int mItemId;
 
@@ -37,6 +39,7 @@ public class DrawerItem {
     private String mTextPrimary;
     private String mTextSecondary;
     private int mTextMode = -1;
+    private ColorStateList mTextColor;
 
     private OnItemClickListener mOnClickListener;
 
@@ -50,6 +53,24 @@ public class DrawerItem {
 
     public boolean isDivider() {
         return mIsDivider;
+    }
+
+    /**
+     * Indicate whether the drawer item should have its activated state set by the adapter
+     * @param isSelected whether the drawer item is selected
+     */
+    public DrawerItem setIsSelected(boolean isSelected) {
+        mIsSelected = isSelected;
+        notifyDataChanged();
+        return this;
+    }
+
+    /**
+     * Whether the drawer item is selected
+     * @return True if the drawer item is selected, false otherwise
+     */
+    public boolean isSelected() {
+        return mIsSelected;
     }
 
     /**
@@ -266,6 +287,33 @@ public class DrawerItem {
         notifyDataChanged();
         return this;
     }
+
+    /**
+     * Gets the text selector of the drawer item
+     *
+     * @return ColorStateList of the drawer item text
+     */
+    public ColorStateList getTextColor() {
+        return mTextColor;
+    }
+
+    /**
+     * Sets the text selector to the drawer item
+     *
+     * @param ColorStateList to set
+     */
+    public DrawerItem setTextColor(ColorStateList mTextColor) {
+        this.mTextColor = mTextColor;
+        notifyDataChanged();
+        return this;
+    }
+
+    /**
+     * Gets whether the drawer item has a text selector set to it
+     *
+     * @return True if the drawer item has a text selector set to it, false otherwise.
+     */
+    public boolean hasTextColor() { return mTextColor != null; }
 
     /**
      * Attaches the drawer item to an adapter

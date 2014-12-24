@@ -71,15 +71,26 @@ public class DrawerAdapter extends ArrayAdapter<DrawerItem> {
 
             if (drawerItem.hasTextPrimary()) {
                 viewHolder.getTextViewPrimary().setText(drawerItem.getTextPrimary());
+                if(drawerItem.hasTextColor()) {
+                    viewHolder.getTextViewPrimary().setTextColor(drawerItem.getTextColor());
+                }
                 if (drawerItem.hasTextSecondary()) {
                     viewHolder.getTextViewSecondary().setText(drawerItem.getTextSecondary());
+                    if(drawerItem.hasTextColor()) {
+                        viewHolder.getTextViewSecondary().setTextColor(drawerItem.getTextColor());
+                    }
                 } else {
                     viewHolder.getTextViewSecondary().setVisibility(View.GONE);
                 }
             } else if (drawerItem.hasTextSecondary()) {
                 viewHolder.getTextViewPrimary().setText(drawerItem.getTextPrimary());
+                if(drawerItem.hasTextColor()) {
+                    viewHolder.getTextViewPrimary().setTextColor(drawerItem.getTextColor());
+                }
                 viewHolder.getTextViewSecondary().setVisibility(View.GONE);
             }
+
+            viewHolder.mRoot.setActivated(drawerItem.isSelected());
         }
 
         return convertView;
