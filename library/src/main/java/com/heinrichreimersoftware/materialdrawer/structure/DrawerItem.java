@@ -55,6 +55,16 @@ public class DrawerItem {
         return mIsDivider;
     }
 
+    public DrawerItem setIsSelected(boolean isSelected) {
+        mIsSelected = isSelected;
+        notifyDataChanged();
+        return this;
+    }
+
+    public boolean isSelected() {
+        return mIsSelected;
+    }
+
     /**
      * Indicate whether the drawer item should have its activated state set by the adapter
      * @param isSelected whether the drawer item is selected
